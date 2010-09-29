@@ -1,0 +1,58 @@
+<html>
+
+<head>
+  <title>Autosuggest Example</title>
+
+  <link rel="stylesheet" href="autosuggest.css" media="all"/>
+
+  <script type="text/javascript" src="autosuggest.js"></script>
+
+  <script type="text/javascript">
+    function states_function() {
+//      var name = "state";
+//      var key = "stateId";
+
+      //var layerId = "state";
+      var listSize = 15;
+      //var textFieldSize = 25;
+
+      var states = [
+        new AutoSuggestPair('NJ', 'New Jersey'),
+        new AutoSuggestPair('NY', 'New York'),
+        new AutoSuggestPair('CA', 'California')
+      ];
+
+      var suggestionsProvider = new SuggesionsProvider('states', 'states');
+
+      suggestionsProvider.setAllSuggestions(states);
+
+      var autoSuggestControl = new AutoSuggestControl(suggestionsProvider, "stateId", "stateId_hidden", "states", false);
+
+      autoSuggestControl.setSize(listSize);
+      autoSuggestControl.setDisplayCompleteList(false);
+      autoSuggestControl.setDefaults("", "");
+      autoSuggestControl.setHighlightColor('yellow');
+    }
+
+    if (window.addEventListener) {
+      window.addEventListener('load', states_function, false);
+    }
+    else if (window.attachEvent) {
+      window.attachEvent('onload', states_function);
+    }
+  </script>
+</head>
+
+<body>
+<p>The type ahead example.</p>
+
+<div id="states">
+  <input type="text" id="stateId" size="25" value="" style=""/>
+
+  <input type="hidden" id="stateId_hidden"/>
+</div>
+
+</body>
+
+</html>
+
